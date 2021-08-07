@@ -13,25 +13,25 @@ The app will track monthly income, monthly actual expenses, budgeted expenses, a
 8.  Monthly spending reports
 9.  
 #Technical:
-GitHub Organization repo (SakuraMatrix)
-Java 8+
-Maven
-Junit 4+
-SLF4J: Log4J2, or Logback, etc.
-Reactor Netty (io.projectreactor.netty:reactor-netty:1.0.9)
-Apache Cassandra w/ Datastax driver
-Spring Framework
-Spring Core/Beans/Context
-Amazon Web Services (kinda optional)
+1.  GitHub Organization repo (SakuraMatrix)
+2.  Java 8+
+3.  Maven
+4.  Junit 4+
+5.  SLF4J: Log4J2, or Logback, etc.
+6.  Reactor Netty (io.projectreactor.netty:reactor-netty:1.0.9)
+7.  Apache Cassandra w/ Datastax driver
+8. Spring Framework
+9. Spring Core/Beans/Context
+10. Amazon Web Services (kinda optional)
 
 #Challenges
-Still learning new technologies needed here (Apache Cassandra, Reactor Netty, Spring framework)
-Still thinking of how to structure the project.
-Challenges with writting clean java code and structure.
-Not enough time to learn and implement Java, Apache Cassandra, etc.
+1.  Still learning new technologies needed here (Apache Cassandra, Reactor Netty, Spring framework)
+2. Still thinking of how to structure the project.
+3. Challenges with writting clean java code and structure.
+4. Not enough time to learn and implement Java, Apache Cassandra, etc.
 
 # Immediate next steps.
-Install and test Docker Container - completed
-Test that Apache Casssndra is running and functioning properly - completed
-Clone Github p1 repository to loacal machine - not completed
-Write a working model of the app - not completeed
+1.  Install and test Docker Container - completed
+2. Test that Apache Casssndra is running and functioning properly - completed
+3.  Clone Github p1 repository to loacal machine - not completed
+4. Write a working model of the app - not completeed
