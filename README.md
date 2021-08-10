@@ -11,7 +11,7 @@ The app will track monthly income, monthly actual expenses, budgeted expenses, a
 6.  Projected growth of the invested funds
 7.  Data to be saved into a database
 8.  Monthly spending reports
-9.  
+
 #Technical:
 1.  GitHub Organization repo (SakuraMatrix)
 2.  Java 8+
