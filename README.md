@@ -1,6 +1,6 @@
 # p1-DavidMagare
 Family Budget App, an app that helps family live within their means, set financial goal for eliminating debt, controlling monthly expenses and saving for unforseen events. 
-The app will track monthly income, monthly actual expenses, budgeted expenses, average montly expenses, available funds to invest or budget deficit. 
+The app will track monthly income, monthly actual expenses, budgeted expenses, average montly expenses, available funds to invest or com.github.dmagare.families.budget deficit. 
 # Features
 
 1.  Login page
