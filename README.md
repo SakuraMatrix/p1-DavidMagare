@@ -11,7 +11,7 @@ The app will track monthly income, monthly actual expenses, budgeted expenses, a
 6.  Projected growth of the invested funds
 7.  Data to be saved into a database
 8.  Monthly spending reports
-9.  
+
 #Technical:
 1.  GitHub Organization repo (SakuraMatrix)
 2.  Java 8+
@@ -33,5 +33,5 @@ The app will track monthly income, monthly actual expenses, budgeted expenses, a
 # Immediate next steps.
 1.  Install and test Docker Container - completed
 2. Test that Apache Casssndra is running and functioning properly - completed
-3.  Clone Github p1 repository to loacal machine - not completed
-4. Write a working model of the app - not completeed
+3.  Clone Github p1 repository to loacal machine - completed
+4. Write a working model of the app - in progress, added a schema and netty server dependency. 
