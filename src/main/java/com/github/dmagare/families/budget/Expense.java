@@ -1,5 +1,6 @@
 package com.github.dmagare.families.budget;
 import java.util.Objects;
+
 public class Expense {
     private int expense_id;
     private String expense_name;
@@ -11,15 +12,15 @@ public class Expense {
     public Expense(int expense_id, String expense_name, double amount) {
         this.expense_id = expense_id;
         this.expense_name = expense_name;
-        this.expense_amount = expense_amount;
+        this.expense_amount = amount;
     }
 
     @Override
     public String toString() {
         return "Expense{" +
-                "expense_Id =" +
-                ", expense_Name =" + expense_name +
-                ",Amount =" + expense_amount +
+                "expense_id=" + expense_id +
+                ", expense_name='" + expense_name + '\'' +
+                ", expense_amount=" + expense_amount +
                 '}';
     }
 @Override

@@ -1,10 +1,16 @@
 package com.github.dmagare.families;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.dmagare.families.budget.Expense;
 import com.github.dmagare.families.repository.ExpenseRepository;
 import com.github.dmagare.families.service.ExpenseService;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import reactor.netty.DisposableServer;
 import reactor.netty.http.server.HttpServer;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -13,40 +19,14 @@ import java.net.URISyntaxException;
 import java.nio.file.Path;
 
 import java.nio.file.Paths;
-
-
-
 public class BudgetApp {
+    static final ObjectMapper OBJECT_MAPPER= new ObjectMapper();
     public static void main(String[] args) throws URISyntaxException {
-        Path indexHTML = Paths.get(BudgetApp.class.getResource("/index.html").toURI());
-        Path errorHTML = Paths.get(BudgetApp.class.getResource("/error.html").toURI());
-
-        CqlSession session = CqlSession.builder().build();
-        ExpenseRepository expenseRepository = new ExpenseRepository(session);
-        ExpenseService expenseService = new ExpenseService(expenseRepository);
-
-        HttpServer.create()
-                .port(8080)
-                .route(routes ->
-                        routes.get("/expenses", (request, response) ->
-                                        response.send(expenseService.getAll().map(BudgetApp::toByteBuf)
-                                                .log("http-server")))
-                                .get("/expenses/{param}", (request, response) ->
-                                        response.send(expenseService.get(request.param("param")).map(BudgetApp::toByteBuf)
-                                                .log("http-server")))
-                                .get("/", (request, response) ->
-                                        response.sendFile(indexHTML))
-                                .get("/error", (request, response) ->
-                                        response.status(404).addHeader("Message", "Goofed")
-                                                .sendFile(errorHTML))
-                )
-                .bindNow()
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(ExpenseConfig.class);
+        applicationContext.getBean(DisposableServer.class)
                 .onDispose()
                 .block();
     }
-
-      static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-
       static ByteBuf toByteBuf(Object o) {
             ByteArrayOutputStream out = new ByteArrayOutputStream();
                     try{
@@ -56,6 +36,19 @@ public class BudgetApp {
                     }
                     return ByteBufAllocator.DEFAULT.buffer().writeBytes(out.toByteArray());
         }
+        static Expense purseExpense(String str){
+            Expense expense = null;
+            try {
+                expense = OBJECT_MAPPER.readValue(str, Expense.class);
+            } catch (JsonProcessingException ex){
+                String[] params = str.split("&");
+                int expense_id =Integer.parseInt(params[0].split("=")[1]);
+                String expense_name = params[1].split("=")[1];
+                double expense_amount = Double.parseDouble(params[2].split("=")[1]);
+                expense = new Expense(expense_id,expense_name,expense_amount);
+            }
+            return expense;
 
+        }
     }
 

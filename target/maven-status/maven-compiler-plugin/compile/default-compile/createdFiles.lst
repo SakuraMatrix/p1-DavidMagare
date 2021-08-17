@@ -1,4 +1,5 @@
 com\github\dmagare\families\repository\ExpenseRepository.class
+com\github\dmagare\families\BudgetApp.class
+com\github\dmagare\families\ExpenseConfig.class
 com\github\dmagare\families\service\ExpenseService.class
 com\github\dmagare\families\budget\Expense.class
-com\github\dmagare\families\BudgetApp.class
