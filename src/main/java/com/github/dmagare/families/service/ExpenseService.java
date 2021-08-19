@@ -23,4 +23,6 @@ public class ExpenseService {
     public static Expense create(Expense expense){
         return expenseRepository.create(expense);
     }
+   // Public Expenses updateExpense(Expenses expense) {return expenseRepository.updateExpenses(expenses); }
+
 }

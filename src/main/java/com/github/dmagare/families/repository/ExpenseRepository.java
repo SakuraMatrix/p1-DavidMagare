@@ -13,23 +13,20 @@ import java.util.logging.Logger;
 @Repository
 public class ExpenseRepository {
     //logger for the class
-   // private static final Logger log=
-   //         (ch.qos.logback.classic.Logger) LoggerFactory.getLogger("logger.families.repo");
+    private static final Logger log=
+        (Logger) LoggerFactory.getLogger("cass.expense.repo") ;
     private final CqlSession session;
     public ExpenseRepository(CqlSession session) {
         this.session = session;
     }
 
     public Expense create(Expense expense){
-        SimpleStatement stmt =SimpleStatement.builder("INSERT INTO families.expenses (expense_id, expense_name, expense_amount) values(?,?,?)")
+        SimpleStatement stmt = SimpleStatement.builder("INSERT INTO families.expenses (expense_id, expense_name, expense_amount) values(?,?,?)")
                 .addPositionalValues(expense.getExpense_id(), expense.getExpense_name(), expense.getExpense_amount())
                 .build();
         Flux.from(session.executeReactive( stmt)).subscribe();
         return expense;
     }
-    
-
-
 
     public Flux<Expense> getAll() {
         return Flux.from(session.executeReactive("SELECT * FROM families.expenses"))
@@ -40,8 +37,6 @@ public class ExpenseRepository {
         return Mono.from(session.executeReactive("SELECT * FROM families.expenses WHERE expense_id =" + expense_id))
                 .map(row -> new Expense(row.getInt("expense_id"), row.getString("expense_name"), row.getDouble("expense_amount")));
     }
-
-
 }
 
 
