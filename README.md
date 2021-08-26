@@ -34,4 +34,4 @@ The app will track monthly income, monthly actual expenses, budgeted expenses, a
 1.  Install and test Docker Container - completed
 2. Test that Apache Casssndra is running and functioning properly - completed
 3.  Clone Github p1 repository to loacal machine - completed
-4. Write a working model of the app - in progress, added a schema and netty server dependency. 
+4. Write a working model of the app - complete, added a schema and netty server dependency. 
